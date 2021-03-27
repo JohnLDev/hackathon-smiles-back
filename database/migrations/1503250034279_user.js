@@ -4,17 +4,21 @@
 const Schema = use('Schema')
 
 class UserSchema extends Schema {
-  up () {
-    this.create('users', (table) => {
+  up() {
+    this.create('users', table => {
       table.increments()
-      table.string('username', 80).notNullable().unique()
+      table.string('username', 80).notNullable()
       table.string('email', 254).notNullable().unique()
-      table.string('password', 60).notNullable()
+      table.string('password', 60)
+      table.integer('experience_bar').default(0)
+      table.integer('level').default(1)
+      table.integer('challenges_completed').default(0)
+
       table.timestamps()
     })
   }
 
-  down () {
+  down() {
     this.drop('users')
   }
 }

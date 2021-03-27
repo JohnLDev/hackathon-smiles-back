@@ -1,0 +1,29 @@
+{
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "standard"
+  ],
+  "plugins": [
+    "prettier"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 12
+  },
+  "rules": {
+    "camelcase":"off",
+    "prettier/prettier": ["error", {
+      "endOfLine":"auto"
+      }],
+      "curly":"off",
+      "space-before-function-paren": "off",
+      "comma-dangle":"off"
+    },
+    "globals": {
+      "use":true
+    }
+  }
