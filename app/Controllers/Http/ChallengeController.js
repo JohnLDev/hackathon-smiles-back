@@ -42,7 +42,12 @@ class ChallengeController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async store({ request, response }) {}
+  async store({ request, response }) {
+    const data = request.only(['name', 'description', 'exp_value', 'type'])
+
+    const challenge = await Challenge.create(data)
+    return challenge
+  }
 
   /**
    * Display a single challenge.
@@ -84,7 +89,14 @@ class ChallengeController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async destroy({ params, request, response }) {}
+  async destroy({ params, request, response }) {
+    const challenge = await Challenge.find(params.id)
+    if (!challenge) {
+      return response.status(404).json({ message: 'challenge not found' })
+    }
+    await challenge.delete()
+    return response.status(200).json({ message: 'success' })
+  }
 }
 
 module.exports = ChallengeController
