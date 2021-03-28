@@ -81,6 +81,12 @@ module.exports = {
       password:
         '1046d1111ddb39062e64fd548dd954f3654d9d1ea4441ce883a0da536626ce86',
       database: 'd5lfpmjcgbgk8r',
+      ssl: true,
+      extra: {
+        ssl: {
+          rejectUnauthorized: false,
+        },
+      },
     },
     debug: Env.get('DB_DEBUG', false),
   },
