@@ -16,7 +16,7 @@ module.exports = {
   | interacting with SQL databases.
   |
   */
-  connection: Env.get('DB_CONNECTION', 'sqlite'),
+  connection: 'pg',
 
   /*
   |--------------------------------------------------------------------------
@@ -81,7 +81,9 @@ module.exports = {
       password:
         '1046d1111ddb39062e64fd548dd954f3654d9d1ea4441ce883a0da536626ce86',
       database: 'd5lfpmjcgbgk8r',
-      ssl: true,
+      ssl: {
+        rejectUnauthorized: false,
+      },
       extra: {
         ssl: {
           rejectUnauthorized: false,
