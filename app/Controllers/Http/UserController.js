@@ -40,6 +40,12 @@ class UserController {
       return response.status(404).json({ message: 'challenge not found' })
     }
 
+    const selected_reward = await ChallengeProgre.findBy('user_id', user.id)
+    if (selected_reward) {
+      selected_reward.exp_amount += challenge.exp_value
+      await selected_reward.save()
+    }
+
     user.challenges_completed = user.challenges_completed + 1
     user.experience_bar = user.experience_bar + challenge.exp_value
 
