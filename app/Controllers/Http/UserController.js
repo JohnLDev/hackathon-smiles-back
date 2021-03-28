@@ -40,10 +40,9 @@ class UserController {
     console.log(challenge)
     user.challenges_completed = user.challenges_completed + 1
     user.experience_bar = user.experience_bar + challenge.exp_value
-    if (user.experience_bar > 300) {
-      user.level = user.level + 1
-      user.experience_bar = user.experience_bar - 300
-    }
+
+    user.level = Math.floor(user.experience_bar / 300)
+
     await user.save()
     return user
   }

@@ -17,9 +17,10 @@
 const Route = use('Route')
 
 Route.get('/', () => {
-  return { greeting: 'Hello world in JSON' }
+  return { greeting: 'Welcome to smiles challenges' }
 })
 Route.resource('/user', 'UserController')
 Route.post('/complete-challenge/:id', 'UserController.completeChallenge')
 Route.resource('/session', 'SessionController')
 Route.resource('/challenge', 'ChallengeController')
+Route.resource('/reward', 'RewardController')
