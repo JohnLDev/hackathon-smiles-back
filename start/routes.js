@@ -21,6 +21,8 @@ Route.get('/', () => {
 })
 Route.resource('/user', 'UserController')
 Route.post('/complete-challenge/:id', 'UserController.completeChallenge')
+Route.post('/select-reward/:id', 'UserController.selectReward')
+Route.post('/retrive-reward', 'UserController.retriveReward')
 Route.resource('/session', 'SessionController')
 Route.resource('/challenge', 'ChallengeController')
 Route.resource('/reward', 'RewardController')
