@@ -6,7 +6,7 @@ const Reward = use('App/Models/Reward')
 const ChallengeProgre = use('App/Models/ChallengesProgre')
 class UserController {
   async index() {
-    return await User.query().with('challengeProgre').fetch()
+    return await User.query().with('challengeProgre.reward').fetch()
   }
 
   async store({ request, response }) {

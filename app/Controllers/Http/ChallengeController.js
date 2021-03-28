@@ -1,5 +1,7 @@
 'use strict'
 
+const FileHandler = require('../../utils/UploadHandler')
+
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
@@ -20,7 +22,7 @@ class ChallengeController {
    * @param {View} ctx.view
    */
   async index({ request, response, view }) {
-    return await Challenge.all()
+    return await Challenge.query().with('file').fetch()
   }
 
   /**
@@ -44,6 +46,8 @@ class ChallengeController {
    */
   async store({ request, response }) {
     const data = request.only(['name', 'description', 'exp_value', 'type'])
+    const file = await FileHandler(request.file('file'))
+    data.file_id = file.id
 
     const challenge = await Challenge.create(data)
     return challenge

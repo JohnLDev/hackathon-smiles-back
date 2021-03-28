@@ -40,7 +40,7 @@ class User extends Model {
   }
 
   challengeProgre() {
-    return this.belongsToMany('App/Models/Reward')
+    return this.hasOne('App/Models/ChallengesProgre')
   }
 }
 
